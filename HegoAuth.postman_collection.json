@@ -1,0 +1,1781 @@
+{
+	"info": {
+		"_postman_id": "3749011d-fc2d-488c-a387-15f1bc8cb6e5",
+		"name": "HegoAuth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1437017"
+	},
+	"item": [
+		{
+			"name": "System",
+			"item": [
+				{
+					"name": "Core",
+					"item": [
+						{
+							"name": "System Token Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"secret\": \"your-system-api-secret-key\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get System Settings",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/settings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update System Settings",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"maintenance\": {\n        \"isEnabled\": false,\n        \"message\": \"System is operational\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/settings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Email Templates",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/email-templates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"email-templates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Email Templates",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"templateName\": \"templateContent\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/email-templates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"email-templates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get System Statistics",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/stats",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"stats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get System Logs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/logs",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"logs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trigger System Backup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/backup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"backup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tenant",
+					"item": [
+						{
+							"name": "Get All Tenants",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Tenant",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test Tenant\",\n    \"slug\": \"test-tenant-{{timestamp}}\",\n    \"domains\": [\n        \"test.com\"\n    ],\n    \"jwtSecret\": \"test-secret\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Tenant",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete All Users",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"roles\": [\n        \"user\",\n        \"admin\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}/users/{{testAdminUserId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}",
+										"users",
+										"{{testAdminUserId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Validation Schema",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}/validation-schema",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}",
+										"validation-schema"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Validation Schema",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"authMethods\": {\n        \"emailPassword\": {\n            \"enabled\": true,\n            \"passwordPolicy\": {\n                \"minLength\": 8,\n                \"requireUppercase\": true,\n                \"requireLowercase\": true,\n                \"requireNumbers\": true,\n                \"requireSpecialChars\": true\n            },\n            \"emailVerification\": {\n                \"required\": true,\n                \"tokenExpiry\": 3600\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}/validation-schema",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}",
+										"validation-schema"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Validation Schema",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{systemToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"authMethods\": {\n        \"emailPassword\": {\n            \"enabled\": true,\n            \"passwordPolicy\": {\n                \"minLength\": 3,\n                \"requireUppercase\": false,\n                \"requireLowercase\": false,\n                \"requireNumbers\": false,\n                \"requireSpecialChars\": true\n            },\n            \"emailVerification\": {\n                \"required\": true,\n                \"tokenExpiry\": 3600\n            }\n        },\n        \"magicLink\": {\n            \"enabled\": true,\n            \"tokenExpiry\": 900000,\n            \"allowedDomains\": []\n        },\n        \"phoneSMS\": {\n            \"enabled\": true\n        }\n    },\n    \"customFields\": [\n        {\n            \"field\": \"username\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"Username\",\n            // \"description\": \"The user's unique username\",\n            \"minLength\": 3,\n            \"maxLength\": 30,\n            \"pattern\": \"^[a-zA-Z0-9_]+$\",\n            \"order\": 1,\n            \"visibility\": {\n                \"conditions\": [\n                    {\n                        \"field\": \"accountType\",\n                        \"operator\": \"equals\",\n                        \"value\": \"premium\"\n                    }\n                ],\n                \"mode\": \"show\"\n            },\n            \"dependencies\": [\n                {\n                    \"field\": \"email\",\n                    \"type\": \"require\",\n                    \"conditions\": [\n                        {\n                            \"field\": \"newsletter\",\n                            \"operator\": \"equals\",\n                            \"value\": true\n                        }\n                    ]\n                }\n            ],\n            \"group\": \"userDetails\",\n            \"section\": \"basicInfo\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/system/tenants/{{tenantId}}/validation-schema",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"system",
+										"tenants",
+										"{{tenantId}}",
+										"validation-schema"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Admin Token Request (OFF)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"secret\": \"your-admin-api-secret-key\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login with Admin Credentials",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{testAdminUserEmail}}\",\n    \"password\": \"{{testAdminUserPassword}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login/email",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										"email"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "List Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Specific User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/users/{{userId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"displayName\": \"Updated Test User\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/users/{{userId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset User Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newPassword\": \"newTestPassword123!\",\n    \"sendEmail\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/users/{{userId}}/reset-password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"{{userId}}",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/users/{{userId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Validation Schema",
+					"item": [
+						{
+							"name": "Get Validation Schema",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/admin/validation-schema",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"validation-schema"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Custom Field",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"customField\",\n    \"type\": \"string\",\n    \"label\": \"Custom Field\",\n    \"required\": true,\n    \"options\": {\n        \"minLength\": 3,\n        \"maxLength\": 50\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/validation-schema/fields",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"validation-schema",
+										"fields"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Field Template",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{adminToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test Template\",\n    \"fields\": [\n        {\n            \"name\": \"testField\",\n            \"type\": \"string\",\n            \"label\": \"Test Field\",\n            \"required\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/admin/templates",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"admin",
+										"templates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Email Password",
+					"item": [
+						{
+							"name": "Register",
+							"item": [
+								{
+									"name": "Register User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{testUserEmail}}\",\n    \"password\": \"{{testUserPassword}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Register User with Invalid Email",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"invalid-email\",\n    \"password\": \"{{testUserPassword}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Register User with Weak Password",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{testUserEmail}}\",\n    \"password\": \"weak\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/register/email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"register",
+												"email"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"item": [
+								{
+									"name": "Login with Correct Credentials",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{testUserEmail}}\",\n    \"password\": \"{{testUserPassword}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login/email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login",
+												"email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Login with Incorrect Password",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{testUserEmail}}\",\n    \"password\": \"wrong-password\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login/email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login",
+												"email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Login with Non-existent Email",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"nonexistent@test.com\",\n    \"password\": \"Test123!@#\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/login/email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"login",
+												"email"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Reset Folder",
+							"item": [
+								{
+									"name": "Request Password Reset",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"{{testUserEmail}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/reset-password/request",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"reset-password",
+												"request"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reset Password with Valid Token",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-tenant-id",
+												"value": "{{tenantId}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"token\": \"{{resetToken}}\",\n    \"password\": \"{{testUserPassword}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/auth/reset-password",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"auth",
+												"reset-password"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Magic Link",
+					"item": [
+						{
+							"name": "Request Magic Link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@test.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/magic-link/request",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"magic-link",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Magic Link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\": \"{{testMagicLinkToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/magic-link/verify",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"magic-link",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Phone SMS",
+					"item": [
+						{
+							"name": "Request SMS Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"+1234567890\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/sms/request",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"sms",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify SMS Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"+1234567890\",\n    \"code\": \"779087\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/sms/verify",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"sms",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Phone Number",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newPhoneNumber\": \"+0987654321\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/phone/change",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"phone",
+										"change"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Social Connect",
+					"item": [
+						{
+							"name": "Get Social Providers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/auth/social",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"social"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Google OAuth",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/auth/social/google",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"social",
+										"google"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Handle Google OAuth Callback",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/social/google/callback",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"social",
+										"google",
+										"callback"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Get Profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{testUserAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/auth/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{testUserAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"displayName\": \"New Name\",\n    \"profile\": {\n        \"secondEmail\": \"second@email.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{testUserAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/auth/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{testUserAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/auth/logout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Token",
+					"item": [
+						{
+							"name": "Refresh Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"{{testUserRefreshToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/token/refresh",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"token",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessToken\": \"{{testUserAccessToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/token/validate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"token",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{testUserAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{tenantId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\": \"{{testUserAccessToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/token/revoke",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"token",
+										"revoke"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const dateNow = new Date();",
+					"pm.environment.set('timestamp', dateNow.toISOString());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/",
+			"type": "default"
+		},
+		{
+			"key": "systemToken",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "tenantId",
+			"value": "67867c61f59f56c87a1b0d2f",
+			"type": "default"
+		},
+		{
+			"key": "resetToken",
+			"value": "604e4d3060f45a6f1e6d88ed0588a4994541e2414aca2e7751d75972c6113dc9",
+			"type": "default"
+		},
+		{
+			"key": "timestamp",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "userId",
+			"value": "67868fdcef59eb1b82965199",
+			"type": "default"
+		},
+		{
+			"key": "testUserEmail",
+			"value": "test@test.com",
+			"type": "default"
+		},
+		{
+			"key": "testUserPassword",
+			"value": "Test123!@#",
+			"type": "default"
+		},
+		{
+			"key": "testUserAccessToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg2ZGNmMWQ3ODI4YmQ0ZGVlZDVhMWMiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzM2ODkxNjMzMjk0LCJleHAiOjE3MzY4OTE2MzY4OTR9.OcXwWNduyML5RHZgqn_83e4XImBpO4NAbcZWCAU15sM",
+			"type": "default"
+		},
+		{
+			"key": "testUserRefreshToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg2ZGRkM2Q3ODI4YmQ0ZGVlZDVhNWYiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTczNjg5MTg1OTQzMiwiZXhwIjoxNzM2ODkyNDY0MjMyfQ.N9pK0HZW9gZTSYy90v8TJgVKLutq39x5KHEWBlcog-w",
+			"type": "default"
+		},
+		{
+			"key": "testMagicLinkToken",
+			"value": "5a149a295685a01e3329ff143e5c8cbe2f6434fbb70ea890519f3c7410ae3a12",
+			"type": "default"
+		},
+		{
+			"key": "adminToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE3MzcxNDQ2NTUsImV4cCI6MTczNzE0ODI1NX0.C8DvDY6mycBadNQHAUFdj55NkWTkjUC7kpjgnbyZPs8",
+			"type": "default"
+		},
+		{
+			"key": "testAdminUserId",
+			"value": "678910a5a689d57f50959979",
+			"type": "default"
+		},
+		{
+			"key": "testAdminUserEmail",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "testAdminUserPassword",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

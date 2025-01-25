@@ -1,0 +1,115 @@
+{
+  "version": "1.0",
+  "rules": {
+    "security": {
+      "auth": {
+        "required_middleware": ["auth.middleware.js", "validation.middleware.js", "security.middleware.js"],
+        "jwt_validation": true,
+        "rate_limiting": true,
+        "input_sanitization": true
+      },
+      "headers": {
+        "required": ["x-tenant-id"],
+        "security_headers": true
+      }
+    },
+    "testing": {
+      "coverage": {
+        "statements": 85,
+        "branches": 80,
+        "functions": 85,
+        "lines": 85
+      },
+      "required_tests": {
+        "auth": ["login", "register", "token_refresh", "password_reset"],
+        "admin": ["user_management", "template_management"],
+        "system": ["tenant_management", "system_maintenance"]
+      }
+    },
+    "code_quality": {
+      "max_file_length": 500,
+      "max_function_length": 50,
+      "complexity": {
+        "cyclomatic": 15,
+        "cognitive": 10
+      },
+      "naming": {
+        "controllers": "*.controller.js",
+        "services": "*.service.js",
+        "middleware": "*.middleware.js",
+        "routes": "*.routes.js",
+        "tests": "*.test.js"
+      }
+    },
+    "documentation": {
+      "required_files": ["README.md", "API.md"],
+      "jsdoc": {
+        "required": true,
+        "coverage": 80
+      }
+    },
+    "dependencies": {
+      "required": [
+        "express",
+        "mongoose",
+        "jsonwebtoken",
+        "bcrypt",
+        "joi",
+        "winston"
+      ],
+      "dev_required": [
+        "jest",
+        "supertest",
+        "mongodb-memory-server",
+        "eslint"
+      ]
+    },
+    "architecture": {
+      "folder_structure": {
+        "src": {
+          "controllers": true,
+          "services": true,
+          "middleware": true,
+          "routes": true,
+          "models": true,
+          "utils": true
+        },
+        "tests": true,
+        "docs": true
+      }
+    },
+    "multi_tenancy": {
+      "tenant_isolation": true,
+      "required_headers": ["x-tenant-id"],
+      "tenant_middleware": true
+    },
+    "error_handling": {
+      "custom_error_classes": true,
+      "error_middleware": true,
+      "validation_errors": true
+    },
+    "logging": {
+      "required": true,
+      "levels": ["error", "warn", "info", "debug"],
+      "request_logging": true
+    },
+    "api": {
+      "versioning": true,
+      "response_format": {
+        "status": true,
+        "data": true,
+        "message": true
+      },
+      "rate_limiting": {
+        "required": true,
+        "window": "15m",
+        "max_requests": 100
+      }
+    },
+    "git": {
+      "commit_message_format": "type(scope): description",
+      "branch_naming": "feature|bugfix|hotfix/description",
+      "required_checks": ["tests", "lint"]
+    }
+  }
+} 
