@@ -53,18 +53,18 @@ A flexible, secure, and feature-rich authentication system that can be integrate
 ## Installation
 
 1. Clone the repository:
-\`\`\`bash
-git clone https://github.com/yourusername/authbox.git
+```bash
+git clone https://github.com/efebalun/authbox.git
 cd authbox
-\`\`\`
+```
 
 2. Install dependencies:
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 3. Create a .env file:
-\`\`\`env
+```env
 PORT=3000
 NODE_ENV=development
 MONGODB_URI=mongodb://localhost:27017/authbox
@@ -91,12 +91,12 @@ CORS_ORIGIN=*
 
 # Redis (optional)
 REDIS_URI=redis://localhost:6379
-\`\`\`
+```
 
 4. Start the server:
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 ## API Documentation
 
@@ -105,81 +105,81 @@ For detailed API documentation including request/response examples, please see [
 ### Authentication Endpoints
 
 #### Email + Password Authentication
-\`\`\`
+```
 POST /auth/register
 POST /auth/login
 POST /auth/verify-email
 POST /auth/resend-verification
 POST /auth/forgot-password
 POST /auth/reset-password
-\`\`\`
+```
 
 #### Magic Link Authentication
-\`\`\`
+```
 POST /auth/magic-link/request
 POST /auth/magic-link/verify
-\`\`\`
+```
 
 #### Phone Authentication
-\`\`\`
+```
 POST /auth/phone/request-code
 POST /auth/phone/verify-code
-\`\`\`
+```
 
 #### Social Authentication
-\`\`\`
+```
 GET /auth/social/:provider
 GET /auth/social/:provider/callback
-\`\`\`
+```
 
 #### Common Endpoints
-\`\`\`
+```
 POST /auth/logout
 POST /auth/refresh-token
 GET /auth/me
-\`\`\`
+```
 
 ### Admin Endpoints
 
 #### User Management
-\`\`\`
+```
 GET /admin/users
 GET /admin/users/:userId
 PUT /admin/users/:userId
 PUT /admin/users/:userId/status
 DELETE /admin/users/:userId
-\`\`\`
+```
 
 #### Validation Schema Management
-\`\`\`
+```
 GET /admin/validation
 POST /admin/validation/fields
 PUT /admin/validation/fields/:fieldId
 DELETE /admin/validation/fields/:fieldId
 PUT /admin/validation/fields/order
 PUT /admin/validation/auth-methods
-\`\`\`
+```
 
 #### Field Templates
-\`\`\`
+```
 GET /admin/templates
 GET /admin/templates/:templateId
 POST /admin/templates
 PUT /admin/templates/:templateId
 DELETE /admin/templates/:templateId
 POST /admin/templates/:templateId/apply
-\`\`\`
+```
 
 ### System Endpoints
 
 #### Tenant Management
-\`\`\`
+```
 POST /system/tenants
 GET /system/tenants
 GET /system/tenants/:tenantId
 PUT /system/tenants/:tenantId
 DELETE /system/tenants/:tenantId
-\`\`\`
+```
 
 ## Models
 
